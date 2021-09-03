@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- #region Sabio Code - You can Fold this region to remove it from sight -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="referrer" content="unsafe-url" />
+    <meta name="description" content="Sabio Coding Bootcamp" />
+    <meta itemprop="image" content="https://sabio.la/Sabio.png" />
+    <link rel="shortcut icon" href="https://sabio.la/Sabio.png" />
+    <link rel="icon" type="image/png" href="https://sabio.la/Sabio.png" />
+    <!-- Do Not Change the HTML title or anything between this line and the line with the 💘's -->
+    <title>PW Execise Template</title>
+    <link href="https://pw.sabio.la/dist/all-site.css" rel="stylesheet" />
+    <script src="https://pw.sabio.la/api/js/site"></script>
+    <script src="https://unpkg.com/axios@0.19.2/dist/axios.min.js"></script>
+    <script src="jobsService.js"></script>
+    <script src="usersService.js"></script>
+    <script src="techCompaniesService.js"></script>
+    <script src="CodeSeven-toastr-50092cc/toastr.js"></script>
+    <link href="CodeSeven-toastr-50092cc/build/toastr.css" rel="stylesheet" />
+
+    <!-- #endregion -->
+    <!-- I 💘 Code, You 💘 Code, We all 💘 Code -->
+    <!-- 💡 All your CSS in here -->
+    <style></style>
+  </head>
+
+  <body class="sabio" data-ins="pw-00">
+    <!-- Do Not Edit or Remove this nav element -->
+    <nav
+      class="do-not-remove navbar navbar-expand-md navbar-dark bg-dark sabio"
+    ></nav>
+
+    <nav class="navbar navbar-dark navbar-expand-lg">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img
+            src="/images/Sabio.png"
+            alt="sabio logo"
+            height="30"
+            width="30"
+          />
+        </a>
+      </div>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a id="blogsNavLink" class="nav-link" href="home.html">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a id="friendsNavLink" class="nav-link" href="friends.html"
+            >Friends</a
+          >
+        </li>
+        <li class="nav-item">
+          <a id="techNavLink" class="nav-link" href="techCompanies.html"
+            >Tech Co</a
+          >
+        </li>
+        <li class="nav-item">
+          <a id="jobsNavLink" class="nav-link" href="jobs.html">Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a id="eventNavLink" class="nav-link" href="events.html">Events</a>
+        </li>
+      </ul>
+      <ul id="loginRegisterNav" class="navbar-nav d-none">
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="register.html">Register</a>
+        </li>
+      </ul>
+      <div class="ms-auto">
+        <button id="logoutSubmitButton" class="btn btn-danger" type="submit">
+          Logout
+        </button>
+        <img
+          src="https://bit.ly/3cHWcj3"
+          alt="user avatar"
+          id="userAvatar"
+          height="30"
+          width="30"
+        />
+      </div>
+    </nav>
+
+    <div class="container text-center">
+      <h3 id="instructionMessage">Add a new job below.</h3>
+    </div>
+
+    <div class="container form-container col-6">
+      <form class="shadow border border-dark bg-light rounded">
+        <div class="form-group">
+          <input type="hidden" id="hiddenInputId" />
+        </div>
+        <div class="form-group">
+          <label for="inputTitle">Title</label>
+          <input type="text" id="inputTitle" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="inputDescription">Description</label>
+          <input type="text" id="inputDescription" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="inputSummary">Summary</label>
+          <input type="text" id="inputSummary" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="inputPay">Pay</label>
+          <input type="text" id="inputPay" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="inputSlug">Slug</label>
+          <input type="text" id="inputSlug" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="selectTechCompany">Tech Company</label>
+          <select
+            id="selectTechCompany"
+            class="form-select"
+            aria-label="tech company"
+          >
+            <option selected>Select Company...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inputSkills">Skills</label>
+          <input
+            type="text"
+            id="inputSkills"
+            class="form-control"
+            aria-describedby="skillsHelp"
+          />
+          <div id="skillsHelp" class="form-text">
+            Seperate skills with a comma ","
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="selectStatusId">StatusId</label>
+          <select id="selectStatusId" class="form-select">
+            <option selected>Active</option>
+            <option>NotSet</option>
+            <option>Deleted</option>
+            <option>Flagged</option>
+          </select>
+          <button
+            id="createJobButton"
+            type="submit"
+            class="btn btn-primary ml-auto col-3"
+          >
+            Create
+          </button>
+          <button
+            id="confirmEditJobButton"
+            type="submit"
+            class="btn btn-primary ml-auto col-3 d-none"
+          >
+            Edit
+          </button>
+          <button
+            id="backToJobsButton"
+            type="submit"
+            class="btn btn-danger ml-auto col-3 d-none"
+          >
+            Back
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Do Not Edit or Remove this footer element -->
+    <footer
+      class="do-not-remove container-fluid footer mx-auto fb-targert sabio"
+    >
+      <p class="text-center">© Sabio.la 2019</p>
+    </footer>
+
+    <!--👇🏻 All your JavaScript code goes below here inside this script tag 👇🏻 -->
+    <script id="candidateCode">
+      function startUp() {
+        console.log("start up");
+        $(".do-not-remove").addClass("d-none");
+        wireUpHandlers();
+        renderPage();
+      }
+      function wireUpHandlers() {
+        $("#createJobButton").on("click", onCreateJobButtonClick);
+        $("#viewMoreButton").on("click", onViewMoreButtonClick);
+        $("#confirmEditJobButton").on("click", onConfirmEditJobButtonClick);
+        $("#backToJobsButton").on("click", onBackToJobsButtonClick);
+      }
+      var onCreateJobButtonClick = (e) => {
+        e.preventDefault();
+        console.log("create clicked");
+        var payload = {
+          title: $("#inputTitle").val(),
+          description: $("#inputDescription").val(),
+          summary: $("#inputSummary").val(),
+          pay: $("#inputPay").val(),
+          slug: $("#inputSlug").val(),
+          statusId: $("#selectStatusId").val(),
+          techCompanyId: $("#selectTechCompany").val(),
+        };
+
+        var skillsArray = $("#inputSkills").val().split(",");
+        payload.skills = skillsArray.map((element) => element.trim());
+
+        jobsService.add(payload).then(onAddJobSuccess).catch(onAddJobError);
+
+        function onAddJobSuccess(response) {
+          console.log(response);
+          toastr.success("Add job successful.");
+          changeFormToEdit(response.data.item);
+        }
+        function onAddJobError(error) {
+          console.log(error);
+          toastr.error("Add job failed.");
+        }
+      };
+      var onConfirmEditJobButtonClick = (e) => {
+        e.preventDefault();
+        var payload = {
+          id: $("#hiddenInputId").val(),
+          title: $("#inputTitle").val(),
+          description: $("#inputDescription").val(),
+          summary: $("#inputSummary").val(),
+          pay: $("#inputPay").val(),
+          slug: $("#inputSlug").val(),
+          statusId: $("#selectStatusId").val(),
+          techCompanyId: $("#selectTechCompany").val(),
+        };
+        jobsService
+          .update(payload)
+          .then(onUpdateJobSuccess)
+          .catch(onUpdateJobError);
+        function onUpdateJobSuccess(response) {
+          console.log(response);
+          toastr.success("Update Successful");
+        }
+        function onUpdateJobError(error) {
+          console.log(error);
+          toastr.error("Update Failed");
+        }
+      };
+      var onBackToJobsButtonClick = (e) => {
+        e.preventDefault();
+        window.location.href = "jobs.html";
+      };
+
+      var renderPage = () => {
+        if (window.location.search.length) {
+          console.log("I'm here from edit with an id");
+          $("#instructionMessage").text("Edit a friend below.");
+          changeFormToEdit();
+        } else {
+          console.log("no id in url. just an add form");
+        }
+        techCompaniesService
+          .getPaginated()
+          .then(onGetPaginatedSuccess)
+          .catch(onGetPaginatedError);
+        function onGetPaginatedSuccess(response) {
+          console.log(response);
+          addTechCompaniesToForm(response.data.item.pagedItems);
+        }
+        function onGetPaginatedError(error) {
+          console.log(error);
+        }
+      };
+
+      var addTechCompaniesToForm = (companiesArray) => {
+        companiesArray.map(mapTechComapanyToForm);
+
+        function mapTechComapanyToForm(company) {
+          var optionTemplateHtml = $("#optionTemplate").html();
+          var optionTemplateClone = $(optionTemplateHtml).clone();
+
+          $(optionTemplateClone).attr("value", company.id);
+          $(optionTemplateClone).html(company.name);
+
+          $("#selectTechCompany").append(optionTemplateClone);
+        }
+      };
+
+      function changeFormToEdit(id) {
+        $("#createJobButton").addClass("d-none");
+        $("#confirmEditJobButton").removeClass("d-none");
+        $("#backToJobsButton").removeClass("d-none");
+        $("#instructionMessage").text("Edit a job below.");
+
+        id ? $("#hiddenInputId").val("id") : getJobByIdAndFill();
+
+        function getJobByIdAndFill() {
+          var idFromUrl = window.location.search.split("=")[1];
+          jobsService
+            .getById(idFromUrl)
+            .then(onGetByIdSuccess)
+            .catch(onGetByIdError);
+          function onGetByIdSuccess(response) {
+            console.log(response);
+            fillJobForm(response.data.item);
+          }
+          function onGetByIdError(error) {
+            console.log(error);
+          }
+          function fillJobForm(jobObj) {
+            $("#hiddenInputId").val(jobObj.id);
+            $("#inputTitle").val(jobObj.title);
+            $("#inputDescription").val(jobObj.description);
+            $("#inputSummary").val(jobObj.summary);
+            $("#inputPay").val(jobObj.pay);
+            $("#inputSlug").val(jobObj.slug);
+            $("#selectTechCompany").val(jobObj.techCompany.id); //not functional
+            $("#selectStatusId").val(jobObj.statusId);
+
+            var skillsArr = [];
+            jobObj.skills.forEach((skill) => skillsArr.push(skill.name));
+            $("#inputSkills").val(skillsArr.join());
+          }
+        }
+      }
+    </script>
+
+    <script id="optionTemplate" type="text/html">
+      <option></option>
+    </script>
+    <!-- 🛑 Do Not Write Any Code Below here -->
+  </body>
+</html>

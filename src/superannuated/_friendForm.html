@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- #region Sabio Code - You can Fold this region to remove it from sight -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="referrer" content="unsafe-url" />
+    <meta name="description" content="Sabio Coding Bootcamp" />
+    <meta itemprop="image" content="https://sabio.la/Sabio.png" />
+    <link rel="shortcut icon" href="https://sabio.la/Sabio.png" />
+    <link rel="icon" type="image/png" href="https://sabio.la/Sabio.png" />
+    <!-- Do Not Change the HTML title or anything between this line and the line with the 💘's -->
+    <title>Add/Edit Friend</title>
+    <link href="https://pw.sabio.la/dist/all-site.css" rel="stylesheet" />
+    <script src="https://pw.sabio.la/api/js/site"></script>
+    <script src="https://unpkg.com/axios@0.19.2/dist/axios.min.js"></script>
+    <script src="friendsService.js"></script>
+    <script src="usersService.js"></script>
+    <script src="CodeSeven-toastr-50092cc/toastr.js"></script>
+    <link href="CodeSeven-toastr-50092cc/build/toastr.css" rel="stylesheet" />
+
+    <!-- #endregion -->
+    <!-- I 💘 Code, You 💘 Code, We all 💘 Code -->
+
+    <!-- 💡 All your CSS in here -->
+    <style></style>
+  </head>
+
+  <body class="sabio" data-ins="pw-00">
+    <!-- Do Not Edit or Remove this nav element -->
+    <nav
+      class="do-not-remove navbar navbar-expand-md navbar-dark bg-dark sabio"
+    ></nav>
+
+    <nav class="navbar navbar-dark navbar-expand-lg">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img
+            src="/images/Sabio.png"
+            alt="sabio logo"
+            height="30"
+            width="30"
+          />
+        </a>
+      </div>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a id="blogsNavLink" class="nav-link" href="home.html">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a id="friendsNavLink" class="nav-link" href="friends.html"
+            >Friends</a
+          >
+        </li>
+        <li class="nav-item">
+          <a id="techNavLink" class="nav-link" href="techCompanies.html"
+            >Tech Co</a
+          >
+        </li>
+        <li class="nav-item">
+          <a id="jobsNavLink" class="nav-link" href="jobs.html">Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a id="eventNavLink" class="nav-link" href="events.html">Events</a>
+        </li>
+      </ul>
+      <ul id="loginRegisterNav" class="navbar-nav d-none">
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="register.html">Register</a>
+        </li>
+      </ul>
+      <div class="ms-auto">
+        <button id="logoutSubmitButton" class="btn btn-danger" type="submit">
+          Logout
+        </button>
+        <img
+          src="https://bit.ly/3cHWcj3"
+          alt="user avatar"
+          id="userAvatar"
+          height="30"
+          width="30"
+        />
+      </div>
+    </nav>
+
+    <div class="form-container container col-4">
+      <h3 id="instructionMessage" class="text-center">
+        Add a new friend below.
+      </h3>
+      <form
+        id="friendCreateEditForm"
+        class="shadow border border-dark bg-light col-12 rounded"
+      >
+        <div class="form-group">
+          <input type="hidden" id="hiddenInputId" />
+        </div>
+        <div class="form-group">
+          <label for="inputTitle">Title</label>
+          <input type="text" id="inputTitle" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="inputBio">Bio</label>
+          <input type="text" id="inputBio" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="inputSummary">Summary</label>
+          <input type="text" id="inputSummary" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="inputHeadline">Headline</label>
+          <input type="text" id="inputHeadline" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="inputSlug">Slug</label>
+          <input type="text" id="inputSlug" class="form-control" />
+        </div>
+        <div class="form-group d-none">
+          <label for="inputSkills">Skills</label>
+          <input type="text" id="inputSkills" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="inputPrimaryImage">Primary Image</label>
+          <input type="text" id="inputPrimaryImage" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="inputStatus">StatusId</label>
+          <div class="form-row">
+            <select id="inputStatusId" class="form-control mr-auto col-4">
+              <option selected>Active</option>
+              <option>NotSet</option>
+              <option>Deleted</option>
+              <option>Flagged</option>
+            </select>
+            <button
+              id="createFriendButton"
+              type="submit"
+              class="btn btn-primary ml-auto col-3"
+            >
+              Create
+            </button>
+            <button
+              id="confirmEditFriendButton"
+              type="submit"
+              class="btn btn-primary ml-auto col-3 d-none"
+            >
+              Edit
+            </button>
+            <button
+              id="cancelEditFriendButton"
+              type="submit"
+              class="btn btn-danger ml-auto col-3 d-none"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Do Not Edit or Remove this footer element -->
+    <footer
+      class="do-not-remove container-fluid footer mx-auto fb-targert sabio"
+    >
+      <p class="text-center">© Sabio.la 2019</p>
+    </footer>
+
+    <!--👇🏻 All your JavaScript code goes below here inside this script tag 👇🏻 -->
+    <script id="candidateCode">
+      function startUp() {
+        console.log("startUp");
+        $(".do-not-remove").addClass("d-none");
+        buttonHandlers();
+        renderPage();
+      }
+      function buttonHandlers() {
+        $("#createFriendButton").on("click", onCreateFriendButtonClick);
+        $("#confirmEditFriendButton").on(
+          "click",
+          onConfirmEditFriendButtonClick
+        );
+        $("#cancelEditFriendButton").on("click", onCancelEditFriendButtonClick);
+      }
+
+      var renderPage = () => {
+        //renderNavbar()
+
+        //check for id in url and if present change for to edit mode
+        if (window.location.search.length) {
+          console.log("I'm here from edit with an id");
+          $("#instructionMessage").text("Edit a friend below.");
+          setFormToEdit(window.location.search.split("=")[1]);
+        } else {
+          console.log("no id in url. just an add form");
+        }
+      };
+
+      var onCreateFriendButtonClick = (e) => {
+        e.preventDefault();
+        var payload = {
+          title: $("#inputTitle").val(),
+          bio: $("#inputBio").val(),
+          summary: $("#inputSummary").val(),
+          headline: $("#inputHeadline").val(),
+          slug: $("#inputSlug").val(),
+          statusId: $("#inputStatusId").val(),
+          primaryImage: $("#inputPrimaryImage").val(),
+        };
+        friendsService
+          .add(payload)
+          .then(onAddFriendSuccess)
+          .catch(onAddFriendError);
+
+        function onAddFriendSuccess(response) {
+          console.log(response);
+          toastr.success("New friend added successfully. Redirecting...");
+          $("#friendCreateEditForm")[0].reset();
+          setTimeout(function () {
+            window.location = "friends.html";
+          }, 2000);
+        }
+        function onAddFriendError(error) {
+          console.log(error);
+          toastr.error("Failed to add friend");
+        }
+
+        console.log(payload);
+      };
+      var onConfirmEditFriendButtonClick = (e) => {
+        e.preventDefault();
+        var payload = {
+          id: $("#hiddenInputId").val(),
+          title: $("#inputTitle").val(),
+          bio: $("#inputBio").val(),
+          summary: $("#inputSummary").val(),
+          headline: $("#inputHeadline").val(),
+          slug: $("#inputSlug").val(),
+          statusId: $("#inputStatusId").val(),
+          primaryImage: $("#inputPrimaryImage").val(),
+        };
+        console.log(payload);
+
+        friendsService.edit(payload).then(onEditSuccess).catch(onEditError);
+
+        function onEditSuccess(response) {
+          console.log(response);
+          toastr.success("Successful edit! Redirecting");
+          setTimeout(function () {
+            window.location = "friends.html";
+          }, 2000);
+        }
+        function onEditError(error) {
+          console.log(error);
+          toastr.error("Error editing friend");
+        }
+      };
+      var onCancelEditFriendButtonClick = (e) => {
+        e.preventDefault();
+        window.location.href = "friends.html";
+      };
+
+      var setFormToEdit = (friendId) => {
+        //change form buttons for edit
+        $("#createFriendButton").addClass("d-none");
+        $("#confirmEditFriendButton").removeClass("d-none");
+        $("#cancelEditFriendButton").removeClass("d-none");
+
+        //get friend to use for auto form fill
+        friendsService
+          .getById(friendId)
+          .then(onGetByIdSuccess)
+          .catch(onGetByIdError);
+        function onGetByIdSuccess(response) {
+          console.log(response);
+          autoFillFormForEdit(response.data.item);
+        }
+        function onGetByIdError(error) {
+          console.log(error);
+        }
+        //fills form from friend axios call response
+        function autoFillFormForEdit(friend) {
+          $("#hiddenInputId").val(friend.id);
+          $("#inputTitle").val(friend.title);
+          $("#inputBio").val(friend.bio);
+          $("#inputSummary").val(friend.summary);
+          $("#inputHeadline").val(friend.headline);
+          $("#inputSlug").val(friend.slug);
+          $("#inputPrimaryImage").val(friend.primaryImage.imageUrl);
+        }
+      };
+    </script>
+    <!-- 🛑 Do Not Write Any Code Below here -->
+  </body>
+</html>
