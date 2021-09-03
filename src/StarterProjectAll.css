@@ -1,0 +1,49 @@
+/* Registration Page/Login Form*/
+.registerForm,
+.loginForm {
+  width: 60%;
+  position: absolute;
+  top: 15vh;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 #000;
+  left: 20%;
+  z-index: -1;
+}
+
+/* Home Page */
+.title-btn {
+  margin: 10px;
+}
+.title-container {
+  padding: 20px 15% 7%;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.title-holder {
+  text-align: center;
+}
+
+/* NavBar */
+.nav-link {
+  color: white !important;
+  font-size: 1.5rem;
+}
+
+.nav-link:hover {
+  font-size: 1.8rem;
+}
+
+/* FriendsPage Cards */
+.friend-card {
+  align-items: center;
+}
+.friend-img {
+  width: 55%;
+  height: 220px;
+  padding-top: 5px;
+}
+.card-delete {
+  margin-right: 5px;
+}
