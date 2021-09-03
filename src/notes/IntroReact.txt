@@ -1,0 +1,210 @@
+componenets a piece of the UI.
+
+independet isolated and reuable componenet in order to make complex ones
+
+
+root componenet (APP)
+this componenet represents the internal application and contains other 
+child componenet. Essentially a tree of componenet.
+
+ex:             APP childs
+    NavBAr, Profile Trends   Feed
+/                            Tweet 
+/                            Like
+
+
+In terms of implementation a componenet is implemented as a javascript class
+
+that has some state and a render method.
+
+-the state is the data that we want to display when the componenet is rendered.
+
+and the rendered method is responsible in describing what the ui looks like. 
+
+The output of this render method is a react element  that maps the DOM element in memory. 
+
+so it keeps a lightweight version (virtual DOM) it's cheap to create.
+when we change the state of a componenet we get a new react element.
+React will then compare this elment with it's children with the previous one
+it figures out what has changed and will update a (part) of the real DOM to keep it in sync 
+witht he virtual DOM. 
+
+unlike other libraries we no longer have to work with BRowser API.
+
+code such as this:
+
+const element = document.querySelector();
+
+element.classList.add();
+
+element.addEventListener();
+
+react will update no need to add on event listener. 
+
+
+react is basicllay a view library making sure the DOM stays in sync with UI changes. 
+very small api to learn.
+you must use other libraries import when it comes to react since its basiclly render and stuff.
+
+with firebase you don't have to build a backend, but it can be expensive.
+
+react talk to back end services
+
+so componennts -> composing components passign data and interact-> pagination with tables.
+Forms with validation->ROutinf and navigation->HTTP services 
+
+
+constructor()
+super no longer needed.
+
+
+Before we start let/const, objects, this, arrow, destructoring, spread, classes, and modules
+
+stand alone functions returns global object. but as a method the object within
+
+
+person.walk.bind() where walk is a method of person object.
+
+however if i do 
+const walk = person.walk.bind(person)
+
+now walk() as a stand alone will refer to person object.
+
+arrow functions don't rebind this.
+
+const person = {
+    talk(){
+        console.log("this",this);
+    }
+}
+we use to set a vraiblae to this before using our callback, but now we just use arrow functions
+and they inherit this they don't rebind to the global object.
+
+
+ecma introduced the map method. 
+whenevr we want to render we use map method.
+
+const color = ["red","blue","green"];
+
+colors.map(color => `<li>${color}</li>`)
+
+one of the modern JS features you see a lot in react applications is object destructoring.
+
+ex:
+
+const address = {
+    street: "",
+    city:"",
+    country""
+}
+
+so normally 
+const street = addresss.street;
+const city = addresss.city;
+const country = addresss.country;
+
+const {street, city, country} = address; this is destructoing 
+
+it copys the value of the obj you don't have to neccassrily get all the values you can do this
+
+const {street: st} = address; you can even name it something else;
+
+
+Spread operator is used a lot too
+const first = [1,2,3];
+const second = [4,5,6];
+
+const combined = [...first, "a", ...second, "b"]; bam!
+
+inheritance 
+
+const person = {
+    name: "MOSH",
+    walk(){
+        console.log("walk");
+    }
+}
+
+
+const person2 = {
+    name: "MOSH",
+}
+
+when we have a an object with a method we start using classes ex:
+
+class Person {
+    constructor(name){
+        this. = name;
+    }
+    walk() {
+        console.log("walk")
+    }
+
+}
+
+now we can do this 
+
+const person = new Person();
+
+inheritance class Teacher extends Person {
+    constructor(name, degree){
+        //because it extends person and we added a construcotr we need to call the constructor of the parent
+        super(name);
+        this.degree = degree;
+    }
+
+    teach() {
+        console.log("teach")
+    }
+}
+
+now if we do : const teacher1 = new Teacher("Cesar","CS");
+
+teacher1.walk() // it should have access to all the parent properties and methods.
+
+moudlarity is simplt seperating our code into multple files. 
+
+
+we call each file our module; 
+
+starting from ecsma script 6 we now have the ability to do modularity.
+
+but it's basically this:
+when we seperate them they are private but when we export them and import them when we need them
+they become public 
+
+named and default exports: 
+named = {} one or more objects with names;
+default = if only a single object we want to export;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+1. Pass Data 
+2. Raise and Handle events
+3. Multiple Components in Sync
+4. Functional Components
+5. Lifecycle Hooks
+
+what is the difference between props and state 
+
+in the counter Component we are using props to initialize state. 
+
+props includes data that we give to a Component. 
+
+state includes data that is private or local to that Component.
+so other Components cannot access that state. In other words if we go to our 
+counters Component all the the attributes that we are setting in 
+
+so you want to handle the event on the parent class that owns the state for example Counter is 
+controlling how many counters we have through it's state. there for we should define the delete counter handler 
+inisde the counter class. We can do this by passing a function as a prop to the child class in this case that 
+Function is the event handler.
+
+
+child componenets will be controlled meaning the parent will handle the event data.
+
