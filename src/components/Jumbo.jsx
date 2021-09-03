@@ -1,0 +1,31 @@
+import React from "react";
+//import userService from "../services/userService";
+class Jumbo extends React.Component {
+  render() {
+    return (
+      <div className="container">
+        {/* <userService></userService>; */}
+        <div className="p-5 mb-4 bg-light rounded-3">
+          <div className="container-fluid py-5">
+            <h1 className="display-5 fw-bold">
+              Hey, this is the home page now
+            </h1>
+            <p className="col-md-8 fs-4">
+              This is a template for a simple marketing or informational
+              website. It includes a large callout called a jumbotron and three
+              supporting pieces of content. Use it as a starting point to create
+              something more unique.
+            </p>
+            <p>
+              <button className="btn btn-primary btn-lg">
+                Learn more &raquo;
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Jumbo;
