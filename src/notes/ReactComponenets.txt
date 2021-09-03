@@ -1,0 +1,50 @@
+So you are unable to pass arguments to functions inside of onClick therefore, 
+whenever you want to passs arguments you would have to do it like this:
+
+say you want an even in regards to some products ID then you would do this 
+
+
+incrementCount = (product) => {
+    // console.log("button is firing: ", this.state.count);
+    this.setState({ count: this.state.count + 1 });
+  };
+
+
+  <button
+          className="btn btn-secondary btn-sm"
+          type="submit"
+          onClick={()=> this.incrementCount(product.id)} //an anonymous call back function.
+        >
+          Increment
+        </button>
+
+
+lets use filter to delete items.
+ex: 
+
+handleDelete = Movie => {
+    const movies = this.state.movies.filter(m => m._id !== movie._id);
+    this.setState({movies});
+};
+
+
+
+
+
+
+
+
+
+find a way to put props into state and chnage it via state if you have to? at minute 33:00 in video
+passing state and functions to children
+
+
+state updates may be asynchronous there 
+
+react may batch multple setState() calls into a single update for performance. 
+
+Because this.props and this.state may be updated asynchronously, you should not rely on values for calculating 
+the next state. 
+
+for example 
+
