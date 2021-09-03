@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- #region Sabio Code - You can Fold this region to remove it from sight -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="referrer" content="unsafe-url" />
+    <meta name="description" content="Sabio Coding Bootcamp" />
+    <meta itemprop="image" content="https://sabio.la/Sabio.png" />
+    <link rel="shortcut icon" href="https://sabio.la/Sabio.png" />
+    <link rel="icon" type="image/png" href="https://sabio.la/Sabio.png" />
+    <!-- Do Not Change the HTML title or anything between this line and the line with the 💘's -->
+    <title>PW Execise Template</title>
+    <link href="https://pw.sabio.la/dist/all-site.css" rel="stylesheet" />
+    <script src="https://pw.sabio.la/api/js/site"></script>
+    <script src="https://unpkg.com/axios@0.19.2/dist/axios.min.js"></script>
+    <script src="entitiesService.refactored.js"></script>
+    <script src="Ajax-Place-In-Sabio-Folder/usersService.refactored.js"></script>
+
+    <!-- #endregion -->
+    <!-- I 💘 Code, You 💘 Code, We all 💘 Code -->
+
+    <!-- 💡 All your CSS in here -->
+    <style></style>
+  </head>
+
+  <body class="sabio" data-ins="pw-00">
+    <!-- Do Not Edit or Remove this nav element -->
+    <nav
+      class="do-not-remove navbar navbar-expand-md navbar-dark bg-dark sabio"
+    ></nav>
+
+    <div class="container ajax sabio"></div>
+
+    <form>
+      <div class="form-group" name="submitEditCar">
+        <label for="inputCarMake">Make</label>
+        <input type="text" id="inputCarMake" placeholder="Make" />
+        <label for="inputCarModel">Model</label>
+        <input type="text" id="inputCarModel" placeholder="Model" />
+        <label for="inputCarYear">Year</label>
+        <input type="text" id="inputCarYear" placeholder="Year" />
+        <input type="hidden" id="inputHiddenId" value="" />
+        <input type="submit" id="addEditSubmitButton" />
+      </div>
+      <label for="renderAllSubmit">Render All Cars</label>
+      <input type="submit" id="renderAllSubmit" />
+    </form>
+
+    <div class="clone-container card-deck"></div>
+
+    <!-- Do Not Edit or Remove this footer element -->
+    <footer
+      class="do-not-remove container-fluid footer mx-auto fb-targert sabio"
+    >
+      <p class="text-center">© Sabio.la 2019</p>
+    </footer>
+
+    <!--👇🏻 All your JavaScript code goes below here inside this script tag 👇🏻 -->
+    <script id="candidateCode">
+      function wireUpHandlers() {
+        $("#addEditSubmitButton").on("click", onAddEditFormSubmitClick);
+        $("#renderAllSubmit").on("click", onRenderAllButtonClick);
+        $(".clone-container").on("click", ".btn-danger", onDeleteButtonClick);
+        $(".clone-container").on("click", ".btn-primary", onEditButtonClick);
+      }
+
+      function startUp() {
+        console.log("start up");
+        wireUpHandlers();
+      }
+
+      //get success error handlers
+      function onGetEntitySuccess(response) {
+        console.log(response.data.items);
+        renderCarsByMapping(response.data.items);
+      }
+      function onGetEntityError(error) {
+        console.log(error);
+      }
+
+      //add success error handlers
+      function onAddEntitySuccess(response) {
+        console.log(response);
+      }
+      function onAddEntityError(error) {
+        console.log(error);
+      }
+
+      //delete success error handlers
+      function onDeleteEntitySuccess(response) {
+        console.log(response);
+      }
+      function onDeleteEntityError(error) {
+        console.log(error);
+      }
+
+      //edit success error handlers
+      function onEditEntitySuccess(response) {
+        console.log(response);
+      }
+      function onEditEntityError(error) {
+        console.log(error);
+      }
+
+      //button handlers
+      function onAddEditFormSubmitClick(e) {
+        //build a payload and pass to api
+        e.preventDefault();
+        const id = $("#inputHiddenId").val();
+        var payload = {
+          make: $("#inputCarMake").val(),
+          model: $("#inputCarModel").val(),
+          year: $("#inputCarYear").val(),
+        };
+        if (!id) {
+          entitiesService
+            .addEntity(payload)
+            .then(onAddEntitySuccess)
+            .catch(onAddEntityError);
+        } else {
+          entitiesService
+            .updateEntity(id, payload)
+            .then(onEditEntitySuccess)
+            .catch(onEditEntityError);
+        }
+        $("#inputHiddenId").val("");
+      }
+      function onRenderAllButtonClick(e) {
+        e.preventDefault();
+        entitiesService
+          .getEntity()
+          .then(onGetEntitySuccess)
+          .catch(onGetEntityError);
+      }
+      function onDeleteButtonClick(e) {
+        e.preventDefault();
+        const id = $(this).closest(".card").attr("data-id");
+        console.log(id);
+        entitiesService
+          .deleteEntity(id)
+          .then(onDeleteEntitySuccess)
+          .then(() => {
+            $(this).closest(".card").remove();
+          })
+          .catch(onDeleteEntityError);
+      }
+      function onEditButtonClick(e) {
+        e.preventDefault();
+        var cardBodyLocation = $(this).closest(".card-body");
+        var tempId = $(this).closest(".card").attr("data-id");
+        var tempMake = cardBodyLocation.find("p.carMake").text();
+        var tempModel = cardBodyLocation.find("p.carModel").text();
+        var tempYear = cardBodyLocation.find("p.carYear").text();
+
+        $("#inputCarMake").val(tempMake);
+        $("#inputCarModel").val(tempModel);
+        $("#inputCarYear").val(tempYear);
+        $("#inputHiddenId").val(tempId);
+      }
+
+      function renderCarsByMapping(arrayOfCars) {
+        let jqCarArray = arrayOfCars.map(mapCar);
+        console.log(jqCarArray);
+        $(".clone-container").append(jqCarArray);
+      }
+
+      //map
+      function mapCar(car) {
+        var carTemplateHTML = $("#carTemplate").html();
+        var jqCar = $(carTemplateHTML).clone();
+
+        jqCar.find("img").attr("src", "/images/Sabio-Blue.png");
+        jqCar.find(".carMake").text(`${car.make}`);
+        jqCar.find(".carModel").text(`${car.model}`);
+        jqCar.find(".carYear").text(`${car.year}`);
+        jqCar.attr("data-id", car.id);
+        console.log(car.id);
+
+        return jqCar;
+      }
+    </script>
+
+    <script id="carTemplate" type="text/html">
+      <div class="card shadow mb-3 text-center w-20" data-id="0">
+        <div class="thumbnail bg-light">
+          <img class="rounded" src="..." alt="car picture" />
+        </div>
+        <div class="card-body bg-light">
+          <h5 class="card-title card-header">Car Record</h5>
+          <div class="card-text">
+            <p class="carMake">Make</p>
+            <p class="carModel">Model</p>
+            <p class="carYear">Year</p>
+          </div>
+          <a href="#" class="btn btn-primary">Edit</a>
+          <a href="#" class="btn btn-danger">Delete</a>
+        </div>
+      </div>
+    </script>
+    <!-- 🛑 Do Not Write Any Code Below here -->
+  </body>
+</html>
