@@ -1,0 +1,27 @@
+{
+  "files.exclude": {
+    "yarn.lock": true,
+    "node_modules": true,
+    "np.sh": true,
+    ".gitignore": true,
+    "template.html": true
+  },
+  "editor.formatOnSave": true,
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#26143a",
+    "activityBar.activeBorder": "#774e29",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#774e29",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "titleBar.activeBackground": "#0d0714",
+    "titleBar.inactiveBackground": "#0d071499",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "statusBar.background": "#0d0714",
+    "statusBarItem.hoverBackground": "#26143a",
+    "statusBar.foreground": "#e7e7e7",
+    "activityBar.activeBackground": "#26143a"
+  },
+  "peacock.color": "#0d0714"
+}
