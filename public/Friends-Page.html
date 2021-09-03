@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- #region Sabio Code - You can Fold this region to remove it from sight -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="referrer" content="unsafe-url" />
+    <meta name="description" content="Sabio Coding Bootcamp" />
+    <meta itemprop="image" content="https://sabio.la/Sabio.png">
+    <link rel="shortcut icon" href="https://sabio.la/Sabio.png">
+    <link rel="icon" type="image/png" href="https://sabio.la/Sabio.png" />
+    <!-- Do Not Change the HTML title or anything between this line and the line with the 💘's -->
+    <title>PW Execise Template</title>
+    <link href="https://pw.sabio.la/dist/all-site.css" rel="stylesheet" />
+    <script src="https://pw.sabio.la/api/js/site"></script>
+    <script src="https://unpkg.com/axios@0.19.2/dist/axios.min.js"></script>
+    <script src="users.js"></script>
+    <script src="friends.js"></script>
+    <!-- #endregion -->
+    <!-- I 💘 Code, You 💘 Code, We all 💘 Code -->
+
+    <!-- 💡 All your CSS in here -->
+    <style>
+        .circular-landscape {
+            display: inline-block;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        .circular-landscape img {
+            width: auto;
+            height: 100%;
+            margin-left: -50px;
+        }
+    </style>
+</head>
+
+<body class="sabio" data-ins="pw-00">
+    <!-- Do Not Edit or Remove this nav element -->
+
+
+
+    <nav class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <!-- <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                                    <use xlink:href="#bootstrap" />
+                                </svg>
+                            </a> -->
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="Home-Page.html" class="nav-link px-2 text-white">Home</a></li>
+                    <li><a href="Friends-Page.html" class="nav-link px-2 text-white">People</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Blogs</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Tech Co.</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Jobs</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Events</a></li>
+                </ul>
+
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                    <input type="search" class="form-control form-control-dark" placeholder="Search..."
+                        aria-label="Search">
+                </form>
+
+                <div class="text-end">
+                    <a href=""><button type="button" class="btn btn-danger searchButton">Search</button></a>
+                    <a href=""><button type="button" class="btn btn-danger logoutButton">Logout</button></a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <header class="py-3 mb-4 border-bottom">
+        <div class="container d-flex flex-wrap justify-content-center">
+            <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32">
+                    <use xlink:href="#bootstrap" />
+                </svg>
+                <button type="button" class="btn btn-primary addFriendButton">Add Friend</button>
+            </a>
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                <input type="search" class="form-control " id="friendsearch" placeholder="Search..."
+                    aria-label="Search">
+            </form>
+
+            <div class="text-end">
+                <a href=""><button type="button" class="btn btn-danger searchButton">Search</button></a>
+            </div>
+        </div>
+    </header>
+
+    <script id="itemTemplate" type="text/template">
+    <div class="col card-temp">
+        <div class="card" style="width: 18rem;">
+            <div class="text-center">
+                <img src="https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg"
+                    class="card-img-top circular-landscape align-items-center" alt="...">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+            </div>       
+            <div class="card-footer">
+                    <a href="#" class="btn btn-danger deleteButton">Delete</a>
+                    <a href="#" class="btn btn-primary editButton">Edit</a>
+            </div>
+        </div>
+    </div>
+    </script>
+    <form id="formTemplate" class="d-none">
+        <div class="row g-3 align-items-center">
+            <div class="row mb-3">
+                <div class="col-1">
+                    <label for="inputTitleLabel" class="col-form-label">Title</label>
+                </div>
+                <div class="col-sm-5">
+                    <input type="title" id="inputTitle" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-1">
+                    <label for="inputBioLabel" class="col-form-label">Bio</label>
+                </div>
+                <div class="col-sm-5">
+                    <input type="Bio" id="inputBio" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-1">
+                    <label for="inputSummaryLabel" class="col-form-label">Summary</label>
+                </div>
+                <div class="col-sm-5">
+                    <input type="Summary" id="inputSummary" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-1">
+                    <label for="inputHeadlineLabel" class="col-form-label">Headline</label>
+                </div>
+                <div class="col-sm-5">
+                    <input type="Headline" id="inputHeadline" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-1">
+                    <label for="inputSlugLabel" class="col-form-label">Slug</label>
+                </div>
+                <div class="col-sm-5">
+                    <input type="Slug" id="inputSlug" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-1">
+                    <label for="inputStatusLabel" class="col-form-label">Status</label>
+                </div>
+                <div class="col-sm-5">
+                    <input type="Status" id="inputStatus" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-1">
+                    <label for="inputSkillsLabel" class="col-form-label">Skills</label>
+                </div>
+                <div class="col-sm-5">
+                    <input type="Skills" id="inputSkills" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-1">
+                    <label for="inputPrimaryImageLabel" class="col-form-label">Primary Image</label>
+                </div>
+                <div class="col-sm-5">
+                    <input type="Primary Image" id="inputPrimaryImage" class="form-control">
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="button" class="btn btn-primary sumbitButton">Submit</button>
+            </div>
+        </div>
+    </form>
+    <div class="searchError d-none" id="searchErrorMessage">
+
+    </div>
+
+    <div class="clone-container row row-cols-1 row-cols-md-6 g-4">
+
+
+    </div>
+
+    <!-- Do Not Edit or Remove this footer element -->
+    <footer class=" do-not-remove container-fluid footer mx-auto fb-targert sabio d-none">
+        <p class="text-center">© Sabio.la 2019</p>
+    </footer>
+
+    <!--👇🏻 All your JavaScript code goes below here inside this script tag 👇🏻 -->
+    <script id="candidateCode">
+        function startUp() {
+            wireUpHandlers()
+
+            friendsService.getAll()
+                .then(ongetAllSuccess)
+                .catch(ongetAllError)
+
+        }
+        var wrapperContainer = $(".clone-container");
+
+        function wireUpHandlers() {
+
+            $(".signOutButton").on("click", signOut);
+            $(".addFriendButton").on("click", onAddFriend);
+            wrapperContainer.on("click", ".deleteButton", deleteFriend);
+            wrapperContainer.on("click", ".editButton", onSelectFriend);
+            $(".sumbitButton").on("click", submitForm);
+            $(".searchButton").on("click", searchfriend);
+            $("#friendsearch").keypress(function (e) {
+
+                if (e.which == 13) {
+                    e.preventDefault();
+                    $(".searchButton").click()
+                }
+            })
+
+        }
+        function getId() {
+            var currentUrl = window.location.href.split("?id=");
+
+            var currentId = currentUrl[1];
+            return currentId
+        }
+        function searchfriend(e) {
+            e.preventDefault()
+            var getSearchData = $("#friendsearch").val()
+            console.log(getSearchData);
+            $("#formTemplate").attr("class", "d-none")
+            friendsService.search(getSearchData)
+                .then(onSearchSuccess)
+                .catch(onSearchError)
+
+        }
+        function onSearchSuccess(response) {
+            console.log(response)
+
+            let searchfriendData = response.data.item.pagedItems
+
+            wrapperContainer.empty();
+
+
+            processArrayByMapping(searchfriendData);
+
+        }
+        function onSearchError(response) {
+            console.log({ Error: response.response.data.errors });
+            let errorMessage = response.response.data.errors;
+            wrapperContainer.empty();
+            $("#searchErrorMessage").attr("class", null)
+            $("#searchErrorMessage").text(errorMessage)
+
+        }
+
+        function moveFriendsPage() {
+            window.location.replace("Friends-Page.html");
+        }
+
+        function onAddFriend(e) {
+            e.preventDefault();
+            wrapperContainer.empty();
+            $("#formTemplate").trigger(`reset`);
+            $("#formTemplate").attr("class", null)
+            window.history.pushState(null, null, window.location.pathname);
+        }
+
+
+
+        function submitForm(e) {
+            e.preventDefault();
+
+
+            var updateData = getFormData();
+            // var addData = getAddData();
+            if (!getId()) {
+                friendsService.add(updateData)
+                    .then(onAddSuccess)
+                    .catch(function (response) {
+                        console.warn(response)
+                    })
+            }
+            else {
+                friendsService.updateById(updateData)
+                    .then(onupdateByIdSuccess)
+                    .catch(function (response) {
+                        console.warn(response.response.data.errors)
+                    })
+            }
+        }
+        function getFormData() {
+            console.log("getFormData is executing")
+
+            var formData = {
+
+
+                "title": $("#inputTitle").val(),
+                "bio": $("#inputBio").val(),
+                "summary": $("#inputSummary").val(),
+                "headline": $("#inputHeadline").val(),
+                "slug": $("#inputSlug").val(),
+                "statusId": $("#inputStatus").val(),
+                "skills": $("#inputSkills").val(),
+                "primaryImage": $("#inputPrimaryImage").val()
+            }
+            if (getId()) {
+
+                formData.id = getId();
+            }
+
+
+
+            return formData;
+        }
+
+
+        // function getAddData() {
+        //     var data = {
+        //         "title": $("#inputTitle").val(),
+        //         "bio": $("#inputBio").val(),
+        //         "summary": $("#inputSummary").val(),
+        //         "headline": $("#inputHeadline").val(),
+        //         "slug": $("#inputSlug").val(),
+        //         "statusId": $("#inputStatus").val(),
+        //         "primaryImage": $("#inputPrimaryImage").val()
+        //     }
+        //     return data
+        // }
+
+
+        function onupdateByIdSuccess(response) {
+            console.log({ updateByIdSuccess: response })
+            moveFriendsPage()
+        }
+
+        function onAddSuccess(response) {
+            console.log({ addSuccess: response })
+            moveFriendsPage()
+        }
+
+
+        function ongetAllSuccess(response) {
+            console.log({ GetallSuccess: response })
+            let friendsData = response.data.item.pagedItems;
+
+            processArrayByMapping(friendsData);
+        }
+        function processArrayByMapping(arrayOfData) {
+
+            let arrayofJqTemplates = arrayOfData.map(mapSingleItem);
+            $(".clone-container").append(arrayofJqTemplates);
+        }
+        function mapSingleItem(shortItem) {
+            var clone = getItemTemplateplate();
+            clone.find(".card-img-top").attr("src", shortItem.primaryImage.imageUrl);
+            clone.find(".card-title").text(shortItem.title);
+            clone.find(".card-text").text(shortItem.summary);
+            clone.find(".card-img-top").attr("id", shortItem.id)
+            return clone;
+        }
+
+        function getItemTemplateplate() {
+            return $($("#itemTemplate").html()).clone();
+        }
+
+
+        function ongetAllError(response) {
+            console.log({ GetallError: response })
+        }
+
+
+        function signOut(e) {
+            e.preventDefault();
+
+            usersService.logout()
+                .then(onLogoutSuccess)
+                .catch(onLogoutError)
+
+            window.location.move("Login-Page.html")
+        }
+        function onLogoutSuccess(response) {
+            onGetCurrentError();
+        }
+        function onLogoutError(response) {
+            console.log({ logoutError: response })
+        }
+
+
+        function deleteFriend(e) {
+            e.preventDefault();
+            var closestCard = $(this).closest(".card-temp");
+            var selectedId = $(closestCard).find(".card-img-top").attr("id")
+
+            friendsService.delete(selectedId)
+                .then(ondeleteSuccess)
+                .catch(ondeleteError)
+
+
+            $(closestCard).remove();
+        }
+        function ondeleteSuccess(response) {
+            console.log({ deleteSuccess: response })
+        }
+        function ondeleteError(response) {
+            console.log({ deleteError: response })
+        }
+
+
+        function onSelectFriend(e) {
+            e.preventDefault();
+            var closestCard = $(this).closest(".card-temp");
+            var selectedId = $(closestCard).find(".card-img-top").attr("id")
+
+
+
+            friendsService.getById(selectedId)
+                .then(onGetByIdSuccess)
+                .catch(onGetByIdError)
+
+            wrapperContainer.empty();
+
+            $("#formTemplate").attr("class", null)
+
+        }
+
+        function onGetByIdSuccess(response) {
+            console.log({ GetbyIDSuccess: response })
+
+            let friendData = response.data.item;
+            // $(".sumbitButton").attr("id", friendData.id);
+
+            window.history.pushState(null, null, `?id=${friendData.id}`);
+            getFriendData(friendData);
+
+        }
+        function getFriendData(friendInfo) {
+
+            $("#inputTitle").val(friendInfo.title);
+            $("#inputBio").val(friendInfo.bio);
+            $("#inputSummary").val(friendInfo.summary);
+            $("#inputHeadline").val(friendInfo.headline);
+            $("#inputSlug").val(friendInfo.slug);
+            $("#inputStatus").val(friendInfo.statusId);
+            $("#inputSkills").val(friendInfo.skills);
+            $("#inputPrimaryImage").val(friendInfo.primaryImage.imageUrl);
+
+
+        }
+
+
+        function onGetByIdError(response) {
+            console.log({ GetbyIDError: response })
+        }
+
+
+
+    </script>
+    <!-- 🛑 Do Not Write Any Code Below here -->
+</body>
+
+</html>
