@@ -1,0 +1,16 @@
+.addFriend {
+  display: block;
+  background: none;
+  text-align: center;
+  width: 100px;
+  border: 2px solid #9caaff;
+  margin: 5px auto;
+  padding: 7px 5px;
+  outline: none;
+  color: white;
+  border-radius: 12px;
+  transition: 0.25s;
+}
+.card-group {
+  position: relative;
+}
