@@ -1,0 +1,320 @@
+import React, { Component } from "react";
+import { withRouter, Route } from "react-router-dom";
+import "./App.css";
+import {
+  currentUser,
+  //getUserById,
+  login,
+  logout,
+} from "./services/usersService";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Register from "./containers/Register";
+import Home from "./containers/Home";
+import LoginForm from "./components/LoginForm";
+import Friends from "./containers/Friends";
+import Blogs from "./containers/Blogs";
+import TechCompanies from "./containers/TechCompanies";
+import Jobs from "./containers/Jobs";
+import JobsFormContainer from "./containers/JobsFormContainer";
+import Events from "./containers/Events";
+import FriendsFormFormik from "./components/friends/FriendsFormFormik";
+import NavBar from "./containers/NavBar";
+import ProductsForm from "./codingchallenge/ProductsForm";
+import EventsFormik from "./components/events/EventsFormik";
+import ConfirmUser from "./components/ConfirmUser";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentUser: {
+        roles: [],
+        id: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        avatarUrl: "",
+      },
+      isLoggedIn: false,
+      formData: {
+        email: "",
+        password: "",
+      },
+    };
+  }
+
+  componentDidMount() {
+    // console.log("onComponentDidMount firing");
+    this.getCurrentUser();
+  }
+
+  getCurrentUser = () => {
+    // console.log("getCurrentUser firing");
+    currentUser().then(this.onGetUserInfoSuccess).catch(this.onGetUserError);
+  };
+
+  onGetUserInfoSuccess = (response) => {
+    console.log("onGetUserInfoSuccess firing", response.data.item);
+    let gotUser = response.data.item;
+    let roles = [];
+    gotUser.roles.forEach((r) => roles.push(r.role));
+    gotUser.roles = roles;
+    console.log(gotUser);
+
+    this.setState((prevState) => {
+      let currentUser = { ...prevState.currentUser };
+      currentUser = gotUser;
+      return { ...prevState, currentUser, isLoggedIn: true };
+    });
+
+    if (this.props.location.pathname === "/login") {
+      this.props.history.push("/");
+    }
+  };
+
+  onGetUserInfoError = (err) => {
+    console.log("onGetUserInfoError firing", err);
+    this.props.history.push("/login");
+  };
+
+  onLoginRequested = (cred) => {
+    // console.log("onLoginRequested firing", { cred });
+    login(cred).then(this.onLoginSuccess).catch(this.onLoginError);
+  };
+
+  onLoginSuccess = (response) => {
+    // console.log("onLoginSuccess firing", response);
+
+    let notify = () =>
+      toast.success("Login Successful", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+    notify();
+
+    this.getCurrentUser();
+  };
+
+  onLoginError = (err) => {
+    console.log("onLoginError firing", err);
+
+    let notify = () =>
+      toast.error(
+        "Login Error: Verify your email and password are correct and try again",
+        {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+          progress: undefined,
+        }
+      );
+    notify();
+  };
+
+  onLogoutRequested = () => {
+    console.log("onLogoutRequested firing");
+    logout().then(this.onLogoutSuccess).catch(this.onLogoutError);
+  };
+
+  onLogoutSuccess = (response) => {
+    // console.log("onLogoutSuccess firing", response);
+    let notify = () =>
+      toast.success("Logout Successful", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+    notify();
+
+    this.setState(() => {
+      let newState = {
+        currentUser: {
+          roles: [],
+          id: "",
+          firstName: "",
+          lastName: "",
+          email: "",
+          avatar: "",
+        },
+        isLoggedIn: false,
+        formData: {
+          email: "",
+          password: "",
+        },
+      };
+
+      return newState;
+    }, this.props.history.push("/login"));
+  };
+
+  onLogoutError = (err) => {
+    console.log("onLogoutError firing", err);
+    let notify = () =>
+      toast.error("There was an error logging out.  Please try again.", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+      });
+    notify();
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <NavBar
+          isLoggedIn={this.state.isLoggedIn}
+          email={this.state.currentUser.email}
+          avatar={this.state.currentUser.avatarUrl}
+          onLogoutRequested={this.onLogoutRequested}
+        />
+        <main role="main">
+          <Route
+            path="/"
+            exact={true}
+            render={() => (
+              <Home
+                currentUser={this.state.currentUser}
+                isLoggedIn={this.state.isLoggedIn}
+              />
+            )}
+          />
+          <Route path="/register" exact={true} component={Register} />
+          <Route
+            path="/login"
+            exact={true}
+            render={() => (
+              <LoginForm onLoginRequested={this.onLoginRequested} />
+            )}
+          />
+          <Route
+            path="/friends"
+            exact={true}
+            render={(props) => (
+              <Friends currentUser={this.state.currentUser} {...props} />
+            )}
+          />
+          {/* <Route
+            path="/friends/add/:friendId(\d+)"
+            exact={true}
+            render={(props) => (
+              <FriendAddEditForm
+                currentUser={this.state.currentUser}
+                {...props}
+              />
+            )}
+          /> */}
+          <Route
+            path="/friends/formik"
+            exact={true}
+            render={(props) => (
+              <FriendsFormFormik
+                currentUser={this.state.currentUser}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            path="/friends/formik/:friendId(\d+)"
+            exact={true}
+            render={(props) => (
+              <FriendsFormFormik
+                currentUser={this.state.currentUser}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            path="/blogs"
+            exact={true}
+            render={(props) => (
+              <Blogs currentUser={this.state.currentUser} {...props} />
+            )}
+          />
+          <Route
+            path="/techcompanies"
+            exact={true}
+            render={(props) => (
+              <TechCompanies currentUser={this.state.currentUser} {...props} />
+            )}
+          />
+          <Route
+            path="/jobs"
+            exact={true}
+            render={(props) => (
+              <Jobs currentUser={this.state.currentUser} {...props} />
+            )}
+          />
+          <Route
+            path="/jobs/form"
+            exact={true}
+            render={(props) => <JobsFormContainer {...props} />}
+          />
+          <Route
+            path="/jobs/form?jobId=:jobId(\d+)"
+            exact={true}
+            render={(props) => <JobsFormContainer {...props} />}
+          />
+          <Route
+            path="/events"
+            exact={true}
+            render={(props) => (
+              <Events currentUser={this.state.currentUser} {...props} />
+            )}
+          />
+          <Route
+            path="/events/formik"
+            exact={true}
+            render={(props) => (
+              <EventsFormik currentUser={this.state.currentUser} {...props} />
+            )}
+          />
+          <Route
+            path="/events/formik/:eventSlug"
+            exact={true}
+            render={(props) => (
+              <EventsFormik currentUser={this.state.currentUser} {...props} />
+            )}
+          />
+          <Route
+            path="/confirmuser/:email"
+            exact={true}
+            render={(props) => (
+              <ConfirmUser currentUser={this.state.currentUser} {...props} />
+            )}
+          />
+          <Route
+            path="/products"
+            exact={true}
+            render={(props) => (
+              <ProductsForm currentUser={this.state.currentUser} {...props} />
+            )}
+          />
+        </main>
+
+        <footer className="container">
+          <p>&copy; Sabio 2019-2020</p>
+        </footer>
+      </React.Fragment>
+    );
+  }
+}
+
+export default withRouter(App);
