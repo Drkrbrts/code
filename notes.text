@@ -1,0 +1,60 @@
+Create a new VIEW for HOME PAGE that renders after log in is successful. 
+    //create new component as home page or new index.js as home page? 
+
+Need CURRENT USER INFO by using 'api/users/current'.
+    //to verify that user is logged in and will render to Home page for users?
+Need to get USER NAME BY ID > {userId} is a placeholder for the users numeric ID. api/users/{userId}
+    // how & when will we use this API call ?
+Need to wire 'api/users/logout' endpoint to Logout BUTTON && direct to Login page.
+
+Display welcome message for current user that shows their NAME and EMAIL. 
+    //need to pass params to receive back data to dislay their name. (full name?)
+    //need to use 'api/users/current' for the welcome msg. 
+
+HOME PAGE CHECKLIST (Logged IN Users):
+    //needs to SHOW the logged in users NAME 
+        // use 'api/users/current' or api/users/{userId}?
+        // place the Name on the TOP RIGHT header. 
+    //need LOG OUT BUTTON then re-route to Login page. 
+    
+HOME PAGE CHECKLIST (Logged OUT Users):
+    //needs a home page that shows a Log in Link OR redirect users to login page.
+        //create another home page for logged out users?
+        //if too complicated re-route to login page.
+
+HOME PAGE ITEMS TO SHOW:
+    //currently logged in users NAME
+    //links to : 
+            Logout - top right corner with user name ID
+            Friends
+            Blogs
+            Tech Companies
+            Jobs
+            Events
+            Register
+        //links all inside siteNav bar in header? 
+
+
+
+
+
+//random navBar code for login/signup button from homepage
+
+            <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+              <input
+                type="search"
+                className="form-control form-control-dark"
+                placeholder="Search..."
+                aria-label="Search"
+              />
+            </form>
+
+            <div className="text-end">
+              <button type="button" className="btn btn-outline-light me-2">
+                Login
+              </button>
+
+              <button type="button" className="btn btn-warning">
+                Sign-up
+              </button>
+        
