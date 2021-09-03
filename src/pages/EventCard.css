@@ -1,0 +1,140 @@
+.card-container-avatar {
+  margin-bottom: 25px;
+}
+
+.friend-title {
+  text-align: left;
+  font-family: "Luckiest Guy", cursive;
+}
+
+/* .rounded-circle {
+  width: 25px;
+  padding: 20px;
+  font-size: 25px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  color: white;
+  border-radius: 50%;
+} */
+
+.updateCompany {
+  margin-top: 85px;
+}
+
+.card-tech:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-tech {
+  /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  border: black solid 10px;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 525px;
+  transition: 0.6s;
+}
+
+.card-body {
+  object-fit: cover;
+  max-height: 550px;
+  min-height: 400px;
+}
+
+.card-img-top-1 {
+  border-radius: 15px;
+
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-title-tech {
+  text-align: center;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+  background-color: #f1f1f1;
+  /* border: gray solid 2px; */
+  border-radius: 10px;
+  color: #686060;
+  /* border: #2b6477 solid 3px; */
+
+  margin-bottom: 10px;
+}
+
+.card-text-tech-profile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f1f1f1;
+  /* border: #2b6477 solid 3px; */
+  border-radius: 10px;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.card-text-tech-summary {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f1f1f1;
+  /* border: #2b6477 solid 3px; */
+  border-radius: 10px;
+  /* padding-bottom: 4px; */
+  margin-bottom: 10px;
+}
+
+.card-text-tech-headline {
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #f1f1f1;
+  /* border: gray solid 2px; */
+  border-radius: 10px;
+  /* color: #a72b2b; */
+  /* font-size: 22px; */
+  /* border: #2b6477 solid 3px; */
+
+  margin-bottom: 10px;
+}
+
+.card-text-slug {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f1f1f1;
+  /* border: #2b6477 solid 3px; */
+  border-radius: 10px;
+  /* padding-bottom: 4px; */
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.card-text-tech-slug {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f1f1f1;
+  /* border: rgb(165, 39, 39) solid 2px; */
+  border-radius: 10px;
+  /* padding-bottom: 4px; */
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.image-tech {
+  border-radius: 15px;
+
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.avatar-dots {
+  float: left;
+  margin-top: 10px;
+}

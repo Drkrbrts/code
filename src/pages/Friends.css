@@ -1,0 +1,15 @@
+.search-box {
+  display: block;
+  height: 30px;
+  width: 20%;
+
+  border: 1px solid #a72b2b;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.container {
+  margin-top: 20px;
+}

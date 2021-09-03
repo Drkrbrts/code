@@ -1,0 +1,23 @@
+.form-description-1 {
+  display: block;
+  height: 75px;
+  width: 100%;
+  /* border: 1px solid #a72b2b; */
+}
+
+.form-summary-1 {
+  display: block;
+  height: 75px;
+  width: 100%;
+  /* border: 1px solid #a72b2b; */
+}
+
+#updateJob-button {
+  margin-top: 23px;
+  float: right;
+  margin-right: 230px;
+}
+
+#add-skill-button {
+  margin-top: 0px;
+}

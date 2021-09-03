@@ -1,0 +1,190 @@
+h1 {
+  font-size: 2.5em; /* 40px/16=2.5em */
+}
+
+h2 {
+  font-size: 1.875em; /* 30px/16=1.875em */
+}
+
+p {
+  font-size: 0.875em; /* 14px/16=0.875em */
+}
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {
+  margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* .column {
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+} */
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  border: black solid 10px;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 575px;
+  min-height: 580px;
+  transition: 0.6s;
+}
+
+.card-body {
+  object-fit: cover;
+  max-height: 550px;
+  min-height: 400px;
+}
+
+.card-img-top {
+  border-radius: 15px;
+
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-title {
+  text-align: center;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+  background-color: #f1f1f1;
+  /* border: gray solid 2px; */
+  border-radius: 10px;
+  color: #504a4a;
+  /* border: #2b6477 solid 3px; */
+
+  margin-bottom: 10px;
+}
+
+.card-text {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f1f1f1;
+  /* border: #2b6477 solid 3px; */
+  border-radius: 10px;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.card-text-job-2 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f1f1f1;
+  /* border: #2b6477 solid 3px; */
+  border-radius: 10px;
+  /* padding-bottom: 4px; */
+  margin-bottom: 10px;
+}
+
+.card-text-job-3 {
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #f1f1f1;
+  /* border: gray solid 2px; */
+  border-radius: 10px;
+  color: #a72b2b;
+  font-size: 22px;
+  /* border: #2b6477 solid 3px; */
+
+  margin-bottom: 10px;
+}
+
+.read-more {
+  border-radius: 5px;
+  width: 55%;
+  height: 65%;
+  margin-top: 5px;
+}
+
+.card-text-job-slug {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f1f1f1;
+  /* border: #2b6477 solid 3px;
+  border-radius: 10px; */
+  /* padding-bottom: 4px; */
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+/* .list-group {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f1f1f1;
+  border: rgb(165, 39, 39) solid 2px;
+  border-radius: 10px;
+ padding-bottom: 4px; 
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}  */
+
+.card-text-4 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f1f1f1;
+  border: #2b6477 solid 3px;
+  border-radius: 10px;
+  padding-bottom: 4px;
+  padding-right: 5px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  padding-top: 5px;
+
+  float: left;
+  width: 50%;
+}
+
+.updateButton {
+  margin-top: 10px;
+  float: right;
+}
+
+.friend-image {
+  border-radius: 15px;
+
+  height: 15px;
+  width: 15;
+
+  max-height: 10px;
+  min-width: 10px;
+}
+
+.company-title {
+  text-decoration: underline;
+  text-decoration: bold;
+}
+
+.company-text {
+  font-style: italic;
+}
+
+.skill-text {
+  text-align: "center";
+}
