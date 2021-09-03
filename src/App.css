@@ -1,0 +1,133 @@
+yar.App {
+  text-align: center;
+}
+div.form-title {
+  font-size: smaller;
+  margin-bottom: 20px;
+}
+
+div.form-login {
+  font-size: smaller;
+  margin-top: 5px;
+
+}
+div.button.si {
+    display: inline-block;
+    margin-left: 50px;
+    padding: auto;
+  }
+
+a {
+  text-decoration: none;
+}
+a.pass {
+  margin-right: 5px;
+}
+
+
+.btn.reg {
+  margin-left: 350px;
+  padding: 10px 20px;
+    border-radius: 10px;
+    width:25%; 
+}
+.btn.frbtn {
+  outline-color: rgb(143, 83, 143);
+  margin-top: 20px;
+  background-color: rgb(143, 83, 143);
+    
+}
+.btn.hm {
+  outline-color: rgb(143, 83, 143);
+  margin-left: 20px;
+  background-color: rgb(143, 83, 143);
+    
+}
+
+.btn.joke2 {
+  margin-left: 20px;
+}
+
+
+.bg-light {
+  background-color: #bfa5c9 !important;
+  
+}
+div.productnav {
+background-color: cadetblue !important;
+}
+
+.btn.joke {
+  outline-color: white;
+  background-color: #bfa5c9;
+}
+.btn.prodbut {
+  margin-top: 15px;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
+nav button {
+  background: none !important;
+  color: inherit;
+  border: none;
+  font: inherit;
+  /*border is optional*/
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+}
+
+.mr-1 {
+  margin-left: 10px;
+}
+
+.mr-2 {
+  margin-right: 30px;
+}
+
+.image {
+  margin-right: 10px;
+}
+button.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  display: inline;
+  /* margin: 0;
+  padding: 0; */
+  text-decoration: none;
+}
+
+.link-button:hover,
+.link-button:focus {
+  text-decoration: none;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
