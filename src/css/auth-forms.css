@@ -1,0 +1,22 @@
+.form-col {
+  margin-bottom: 0.8rem;
+}
+
+.form-container {
+  margin-top: 2em;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  min-width: 200px;
+  max-width: 600px;
+}
+
+.form-popup-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.page-title {
+  margin-bottom: 1rem;
+}
