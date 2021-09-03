@@ -1,0 +1,28 @@
+.form-col {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-container {
+  margin-top: 2em;
+  margin-bottom: 2rem;
+}
+
+.form-popup-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.page-title {
+  margin-top: 1rem;
+  background-color: lightgrey;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.row-selector {
+  display: flex;
+  flex-direction: row;
+}

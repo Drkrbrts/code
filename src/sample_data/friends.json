@@ -1,0 +1,19 @@
+{
+    "id": 26304,
+    "bio": "Bio text here. All the details and highlights and stuff and things",
+    "title": "A Friend Title",
+    "summary": "Some highlights.",
+    "headline": "Stuff and things",
+    "entityTypeId": 1,
+    "statusId": "Active",
+    "slug": "some-new-sf",
+    "skills": null,
+    "primaryImage": {
+        "id": 13497,
+        "entityId": 26304,
+        "imageTypeId": "Main",
+        "imageUrl": "https://bit.ly/3iZdRGY"
+    },
+    "dateCreated": "2021-07-11T17:42:55.8466667",
+    "dateModified": "2021-07-11T17:42:55.8466667"
+}
